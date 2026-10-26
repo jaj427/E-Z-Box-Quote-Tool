@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>E‑Z Box Instant Quote</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial, sans-serif; background:#f7f7f7; padding:20px; }
+    .container { max-width:500px; margin:auto; background:white; padding:20px; border-radius:8px; box-shadow:0 0 10px rgba(0,0,0,0.1); }
+    button { background:#0078D4; color:white; border:none; padding:10px; width:100%; border-radius:5px; font-size:16px; }
+    select, input { width:100%; padding:8px; margin-bottom:10px; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>E‑Z Box Instant Quote</h2>
+
+  <label>Choose Your Box Size:</label>
+  <select id="boxSize">
+    <option value="159">16' x 8' x 8' — $159/mo</option>
+    <option value="149">12' x 8' x 8' — $149/mo</option>
+    <option value="129">8' x 8' x 8' — $129/mo</option>
+  </select>
+
+  <label>Distance From Our Location (miles):</label>
+  <input id="distance" type="number" min="0" placeholder="Enter miles">
+
+  <button onclick="calculateQuote()">Get Quote</button>
+
+  <div id="quoteResult" style="margin-top:20px;font-size:16px;"></div>
+</div>
+
+<script>
+function calculateQuote() {
+  const taxRate = 0.06;
+  const monthly = Number(document.getElementById("boxSize").value);
+  const miles = Number(document.getElementById("distance").value);
+
+  let deliveryFee = 85;
+  if (miles > 30) {
+    deliveryFee = 85 + ((miles - 30) * 2.25);
+  }
+
+  const monthlyWithTax = monthly + (monthly * taxRate);
+
+  const result = `
+    <strong>Monthly Rental:</strong> $${monthly.toFixed(2)}<br>
+    <strong>Tax:</strong> $${(monthly * taxRate).toFixed(2)}<br>
+    <strong>Total Monthly:</strong> $${monthlyWithTax.toFixed(2)}<br><br>
+    <strong>Delivery Fee:</strong> $${deliveryFee.toFixed(2)}<br><br>
+    <strong><u>Total Due at Delivery:</u></strong> $${deliveryFee.toFixed(2)}<br>
+    <strong><u>Monthly Charge:</u></strong> $${monthlyWithTax.toFixed(2)}
+  `;
+
+  document.getElementById("quoteResult").innerHTML = result;
+}
+</script>
+
+</body>
+</html>
