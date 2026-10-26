@@ -31,14 +31,15 @@
 </div>
 
 <script>
+<script>
 function calculateQuote() {
   const taxRate = 0.06;
   const monthly = Number(document.getElementById("boxSize").value);
   const miles = Number(document.getElementById("distance").value);
 
-  let deliveryFee = 85;
+  let transportationFee = 85;
   if (miles > 30) {
-    deliveryFee = 85 + ((miles - 30) * 2.25);
+    transportationFee = 85 + ((miles - 30) * 2.25);
   }
 
   const monthlyWithTax = monthly + (monthly * taxRate);
@@ -47,14 +48,14 @@ function calculateQuote() {
     <strong>Monthly Rental:</strong> $${monthly.toFixed(2)}<br>
     <strong>Tax:</strong> $${(monthly * taxRate).toFixed(2)}<br>
     <strong>Total Monthly:</strong> $${monthlyWithTax.toFixed(2)}<br><br>
-    <strong>Delivery Fee:</strong> $${deliveryFee.toFixed(2)}<br><br>
-    <strong><u>Total Due at Delivery:</u></strong> $${deliveryFee.toFixed(2)}<br>
+    <strong>Transportation Fee:</strong> $${transportationFee.toFixed(2)}<br><br>
     <strong><u>Monthly Charge:</u></strong> $${monthlyWithTax.toFixed(2)}
   `;
 
   document.getElementById("quoteResult").innerHTML = result;
 }
 </script>
+
 
 </body>
 </html>
