@@ -43,17 +43,21 @@ function calculateQuote() {
 
   const monthlyWithTax = monthly + (monthly * taxRate);
 
+  // Initial Fees = Total Monthly Rent + (Transportation Fee × 2)
+  const initialFees = monthlyWithTax + (transportationFee * 2);
+
   const result = `
     <strong>Monthly Rental:</strong> $${monthly.toFixed(2)}<br>
     <strong>Tax:</strong> $${(monthly * taxRate).toFixed(2)}<br>
-    <strong>Total Monthly:</strong> $${monthlyWithTax.toFixed(2)}<br><br>
+    <strong>Total Monthly Rent:</strong> $${monthlyWithTax.toFixed(2)}<br><br>
     <strong>Transportation Fee:</strong> $${transportationFee.toFixed(2)}<br><br>
-    <strong><u>Monthly Charge:</u></strong> $${monthlyWithTax.toFixed(2)}
+    <strong><u>Initial Fees:</u></strong> $${initialFees.toFixed(2)}
   `;
 
   document.getElementById("quoteResult").innerHTML = result;
 }
 </script>
+
 
 </body>
 </html>
