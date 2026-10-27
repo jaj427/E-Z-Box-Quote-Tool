@@ -3,14 +3,54 @@
 <head>
   <title>E‑Z Box Instant Quote</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <style>
-    body { font-family: Arial, sans-serif; background:#f7f7f7; padding:20px; }
-    .container { max-width:500px; margin:auto; background:white; padding:20px; border-radius:8px; box-shadow:0 0 10px rgba(0,0,0,0.1); }
-    button { background:#0078D4; color:white; border:none; padding:10px; width:100%; border-radius:5px; font-size:16px; }
-    select, input { width:100%; padding:8px; margin-bottom:10px; }
+    body { 
+      font-family: Arial, sans-serif; 
+      background:#f7f7f7; 
+      padding:40px; 
+      font-size:20px;
+    }
+
+    .container { 
+      max-width:650px; 
+      margin:auto; 
+      background:white; 
+      padding:30px; 
+      border-radius:12px; 
+      box-shadow:0 0 15px rgba(0,0,0,0.15); 
+    }
+
+    button { 
+      background:#0078D4; 
+      color:white; 
+      border:none; 
+      padding:15px; 
+      width:100%; 
+      border-radius:8px; 
+      font-size:20px; 
+      cursor:pointer;
+    }
+
+    select, input { 
+      width:100%; 
+      padding:12px; 
+      margin-bottom:15px; 
+      font-size:18px;
+    }
+
+    #quoteResult {
+      font-size:20px;
+      line-height:1.6;
+    }
   </style>
 </head>
 <body>
+
+<!-- LOGO -->
+<div style="text-align:center; margin-bottom:20px;">
+  <img src="logo.png" alt="RVA EZ BOX Logo" style="max-width:300px; width:100%; height:auto;">
+</div>
 
 <div class="container">
   <h2>E‑Z Box Instant Quote</h2>
@@ -27,7 +67,7 @@
 
   <button onclick="calculateQuote()">Get Quote</button>
 
-  <div id="quoteResult" style="margin-top:20px;font-size:16px;"></div>
+  <div id="quoteResult" style="margin-top:20px;"></div>
 </div>
 
 <script>
@@ -51,13 +91,13 @@ function calculateQuote() {
     <strong>Tax:</strong> $${(monthly * taxRate).toFixed(2)}<br>
     <strong>Total Monthly Rent:</strong> $${monthlyWithTax.toFixed(2)}<br><br>
     <strong>Transportation Fee:</strong> $${transportationFee.toFixed(2)}<br><br>
-    <strong><u>Initial Fees:</u></strong> $${initialFees.toFixed(2)}
+    <strong><u>Initial Fees:</u></strong> $${initialFees.toFixed(2)}<br>
+    <em>(Monthly rent + Delivery + Pickup)</em>
   `;
 
   document.getElementById("quoteResult").innerHTML = result;
 }
 </script>
-
 
 </body>
 </html>
